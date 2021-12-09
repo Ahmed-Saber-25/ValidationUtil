@@ -5,7 +5,6 @@ import java.lang.StringBuilder
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-
 /**
  * @Author: Ahmed Saber
  * @Date: 12/9/2021
@@ -13,7 +12,7 @@ import java.util.regex.Pattern
  */
 object ValidationUtil {
 
-     fun validateUserName(
+    fun validateUserName(
         userName: String,
         startCharacterRange: Int,
         endCharacterRange: Int,
@@ -88,7 +87,7 @@ object ValidationUtil {
         return ipAddress.matches(ipAddressRegex)
     }
     fun validateEgyptianNationalId(nationalId:String):Boolean{
-        var nationalIdRegex = Regex( "^ (2|3)[0-9][1-9][0-1][1-9][0-3][1-9](01|02|03|04|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|88)\\d\\d\\d\\d\\d$")
+        var nationalIdRegex = Regex( "^(2|3)[0-9][1-9][0-1][1-9][0-3][1-9](01|02|03|04|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|88).+$")
         return nationalId.matches(nationalIdRegex)
     }
     fun validateCvvNumber(cvvNumber:String):Boolean{
@@ -112,11 +111,18 @@ object ValidationUtil {
             creditCardNumber.matches(visaRegex) -> CreditCardType.VISA
             creditCardNumber.matches(masterRegex) -> CreditCardType.MASTER
             creditCardNumber.matches(amexRegex) -> CreditCardType.AMEX
-           else ->CreditCardType.NOT_VALID
+            else ->CreditCardType.NOT_VALID
         }
     }
 
-    fun validateKsaNationalId(id: String): IdType {
+    fun isKsaCitizen(id: String):Boolean{
+        return getKsaNationalIdType(id)==IdType.SAUDI
+    }
+    fun isKsaResident(id: String):Boolean{
+        return getKsaNationalIdType(id)==IdType.RESIDENT
+    }
+
+    fun getKsaNationalIdType(id: String): IdType {
         val trimId = id.trim { it <= ' ' }
         if (!trimId.matches("[0-9]+".toRegex())) {
             return IdType.NOT_VALID
@@ -154,4 +160,20 @@ object ValidationUtil {
             fun from(findValue: Int): CreditCardType = CreditCardType.values().first { it.value == findValue }
         }
     }
+}
+fun main(){
+    println(ValidationUtil.validateKsaPhoneNumber("+966544949955"))
+    println(ValidationUtil.validateEgPhoneNumber("01520713678"))
+    println(ValidationUtil.validateIpAddress("192.168.1.1"))
+    println(ValidationUtil.validateEgyptianNationalId("293050232190031"))
+    println(ValidationUtil.validateCvvNumber("531"))
+    println(ValidationUtil.isVisa("4111111111111111"))
+    println(ValidationUtil.isMaster("5105105105105100"))
+    println(ValidationUtil.isAmex("371449635398431"))
+    println(ValidationUtil.getKsaNationalIdType("1635788548"))
+    println(ValidationUtil.getKsaNationalIdType("2827927043"))
+    println(ValidationUtil.getKsaNationalIdType("293050232190031"))
+    println(ValidationUtil.isKsaCitizen("1635788548"))
+    println(ValidationUtil.isKsaResident("2827927043"))
+    println(ValidationUtil.isKsaResident("293050232190031"))
 }
