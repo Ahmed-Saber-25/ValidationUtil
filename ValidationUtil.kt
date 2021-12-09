@@ -13,7 +13,7 @@ import java.util.regex.Pattern
  */
 object ValidationUtil {
 
-    fun validateUserName(
+     fun validateUserName(
         userName: String,
         startCharacterRange: Int,
         endCharacterRange: Int,
@@ -24,10 +24,11 @@ object ValidationUtil {
         var regexStringBuilder = getInputRegexString(
             haveCapitalLetters,
             haveDotOrUnderScoreOrSpecialChar,
-            haveNumbers
+            haveNumbers,
+            startCharacterRange,
+            endCharacterRange
         )
-        var userNameRegex =
-            Regex("^(?=[$regexStringBuilder]{$startCharacterRange,$endCharacterRange}\$)")
+        var userNameRegex = Regex(regexStringBuilder)
         return userName.matches(userNameRegex)
     }
 
@@ -42,26 +43,31 @@ object ValidationUtil {
         var regexStringBuilder = getInputRegexString(
             haveCapitalLetters,
             haveDotOrUnderScoreOrSpecialChar,
-            haveNumbers
+            haveNumbers,
+            startCharacterRange,
+            endCharacterRange
         )
-        var userPassRegex =
-            Regex("^(?=[$regexStringBuilder]{$startCharacterRange,$endCharacterRange}\$)")
+        var userPassRegex = Regex(regexStringBuilder)
         return userPassword.matches(userPassRegex)
     }
 
-     fun getInputRegexString(
+    fun getInputRegexString(
         haveCapitalLetters: Boolean,
         haveDotOrUnderScoreOrSpecialChar: Boolean,
-        haveNumbers: Boolean
-    ): StringBuilder {
-        var regexStringBuilder = StringBuilder("a-z")
-        if (haveCapitalLetters)
-            regexStringBuilder.append("A-Z")
-        if (haveNumbers)
-            regexStringBuilder.append("0-9")
-        if (haveDotOrUnderScoreOrSpecialChar)
-            regexStringBuilder.append("._@#$%^&+=!")
-        return regexStringBuilder
+        haveNumbers: Boolean,
+        startCharacterRange: Int,
+        endCharacterRange: Int
+    ): String {
+        var enableCapital = "!"
+        var enableDotOrUnderScoreOrSpecialChar = "!"
+        var enableNumbers = "!"
+        if(haveCapitalLetters)
+            enableCapital = "="
+        if(haveDotOrUnderScoreOrSpecialChar)
+            enableDotOrUnderScoreOrSpecialChar = "="
+        if(haveNumbers)
+            enableNumbers = "="
+        return "^(?=.*[a-z])(?${enableCapital}.*[A-Z])(?${enableNumbers}.*\\d)(?${enableDotOrUnderScoreOrSpecialChar}.*[-+_!@#$%^&*.,?]){${startCharacterRange},${endCharacterRange}}.+$"
     }
     fun validateUserEmail(
         userEmail: String
