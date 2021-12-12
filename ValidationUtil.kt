@@ -32,7 +32,8 @@ object ValidationUtil {
         haveNumbers: Boolean,
         hasCapitalLetters: Boolean
     ): Boolean {
-        var regexStringBuilder = getInputRegexString(
+        return isValidInput(
+            userName,
             minLength,
             maxLength,
             hasDot,
@@ -41,8 +42,6 @@ object ValidationUtil {
             haveNumbers,
             hasCapitalLetters
         )
-        var userNameRegex = Regex(regexStringBuilder)
-        return userName.matches(userNameRegex)
     }
     /**@usage: validate entered user password based on passed parameters.
      * @param userPassword A String containing the user's password
@@ -65,6 +64,38 @@ object ValidationUtil {
         haveNumbers: Boolean,
         hasCapitalLetters: Boolean
     ): Boolean {
+        return isValidInput(
+            userPassword,
+            minLength,
+            maxLength,
+            hasDot,
+            hasUnderScore,
+            hasSpecialCharacter,
+            haveNumbers,
+            hasCapitalLetters
+        )
+    }
+    /**@usage: validate entered input String based on passed parameters.
+     * @param inputString A String to validate based on values of given parameters
+     * @param minLength An Integer value to determine input String minimum length
+     * @param maxLength An Integer value to determine input String maximum length
+     * @param hasDot A Boolean value to determine if input String has at least one dot or not
+     * @param hasUnderScore A Boolean value to determine if input String has at least one underscore or not
+     * @param hasSpecialCharacter A Boolean value to determine if input String has at least special character from these [-+!@#$%^&*,?] or not
+     * @param haveNumbers A Boolean value to determine if input String has at least one number in range 0-9 or not
+     * @param hasCapitalLetters A Boolean value to determine if input String has at least one capital letter or not
+     * @return A Boolean value that is determined on given parameters
+     */
+    private fun isValidInput(
+        inputString: String,
+        minLength: Int,
+        maxLength: Int,
+        hasDot: Boolean,
+        hasUnderScore: Boolean,
+        hasSpecialCharacter: Boolean,
+        haveNumbers: Boolean,
+        hasCapitalLetters: Boolean
+    ): Boolean {
         var regexStringBuilder = getInputRegexString(
             minLength,
             maxLength,
@@ -74,9 +105,10 @@ object ValidationUtil {
             haveNumbers,
             hasCapitalLetters
         )
-        var userPassRegex = Regex(regexStringBuilder)
-        return userPassword.matches(userPassRegex)
+        var validationRegex = Regex(regexStringBuilder)
+        return inputString.matches(validationRegex)
     }
+
     /**@usage: build required regex based on passed parameters.
      * @param minLength An Integer value to determine regex minimum length
      * @param maxLength An Integer value to determine regex maximum length
@@ -252,7 +284,7 @@ object ValidationUtil {
         }
     }
     /**
-     * @usage: this enum class identifies different types of credit card 
+     * @usage: this enum class identifies different types of credit card
      */
     enum class CreditCardType(val value: Int) {
         VISA(1), MASTER(2), AMEX(3),NOT_VALID(-1);
@@ -263,7 +295,7 @@ object ValidationUtil {
     }
 }
 fun main(){
-    println(ValidationUtil.isValidUserName("Ahmed._@8",5,7,true,true,true,true,true))
+    println(ValidationUtil.isValidUserName("Ahd._@8",5,7,true,true,true,true,true))
     println(ValidationUtil.isValidKsaPhoneNumber("+966544949955"))
     println(ValidationUtil.isValidEgPhoneNumber("01520713678"))
     println(ValidationUtil.isValidIpAddress("192.168.1.1"))
