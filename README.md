@@ -30,13 +30,24 @@ ValidationUtil.isValidUserName("ahmed", 5, 7)
 ValidationUtil.isValidUserName("ahmed.", 5, 7, hasDot = ValidationUtil.RegexAdditionType.MANDATORY.value)
 //=> true
 
-ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationUtil.RegexAdditionType.MANDATORY.value)
+ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationUtil.RegexAdditionType.OPTIONAL.value)
 //=> true
 ```
 
 ### isValidUserPassword(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user password 
  
+ **Params**
+
+* `userPassword` **{String}** mandatory input
+* `minLength` **{Int}** mandatory input
+* `maxLength` **{Int}** mandatory input
+* `hasDot` **{Int}** optional input
+* `hasUnderScore` **{Int}** optional input
+* `hasSpecialCharacter` **{Int}** optional input
+* `hasNumbers` **{Int}** optional input
+* `hasCapitalLetters` **{Int}** optional input
+* `returns` **{Boolean}**
  **Example**
 
 ```kt
@@ -50,8 +61,47 @@ ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = Validation
  ### isValidInput(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for building the required regex to match input string 
  
+  **Params**
+
+* `inputString` **{String}** mandatory input
+* `minLength` **{Int}** mandatory input
+* `maxLength` **{Int}** mandatory input
+* `hasDot` **{Int}** optional input
+* `hasUnderScore` **{Int}** optional input
+* `hasSpecialCharacter` **{Int}** optional input
+* `hasNumbers` **{Int}** optional input
+* `hasCapitalLetters` **{Int}** optional input
+* `returns` **{Boolean}**
+ **Example**
+
+```kt
+ ValidationUtil.isValidInput("ahmdK9._@", 5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> true
+
+ValidationUtil.isValidInput("Ahmed", 5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
+//=> false
+```
   ### getInputRegexString(): String
  this function returns astring value which is the required regex based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) 
+ 
+   **Params**
+* `minLength` **{Int}** mandatory input
+* `maxLength` **{Int}** mandatory input
+* `hasDot` **{Int}** optional input
+* `hasUnderScore` **{Int}** optional input
+* `hasSpecialCharacter` **{Int}** optional input
+* `hasNumbers` **{Int}** optional input
+* `hasCapitalLetters` **{Int}** optional input
+* `returns` **{String}**
+ **Example**
+
+```kt
+ ValidationUtil.getInputRegexString(5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> ^(?=.*[a-z])(.*[A-Z]*?)(.*\d*?)(.*[.]*?)(.*[_]*?)(.*[-+!@#$%^&*,?]*?).{5,7}$
+
+ValidationUtil.getInputRegexString(5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
+//=> ^(?=.*[a-z])(?!.*[A-Z])(?!.*\d)(?!.*[.])(?!.*[_])(?!.*[-+!@#$%^&*,?]).{5,7}$
+```
  
   ### isValidUserEmail(): Boolean
  this function returns aboolean value which that illustrates the input email is valid or not based on used regex
