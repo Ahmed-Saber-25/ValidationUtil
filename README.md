@@ -7,7 +7,9 @@
 
 ### isValidUserName(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user name 
- **Example**
+ 
+ 
+**Example**
 
 ```kt
 ValidationUtil.isValidUserName("ahmed", 5, 7)
