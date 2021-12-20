@@ -9,6 +9,18 @@
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user name 
  
  
+**Params**
+
+* `userName` **{String}** mandatory input
+* `minLength` **{Int}** mandatory input
+* `maxLength` **{Int}** mandatory input
+* `hasDot` **{Int}** optional input
+* `hasUnderScore` **{Int}** optional input
+* `hasSpecialCharacter` **{Int}** optional input
+* `hasNumbers` **{Int}** optional input
+* `hasCapitalLetters` **{Int}** optional input
+* `returns` **{Boolean}**
+
 **Example**
 
 ```kt
@@ -24,6 +36,16 @@ ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationU
 
 ### isValidUserPassword(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user password 
+ 
+ **Example**
+
+```kt
+ ValidationUtil.isValidUserPassword("ahmdK9._@", 5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> true
+
+ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
+//=> false
+```
  
  ### isValidInput(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for building the required regex to match input string 
@@ -65,7 +87,7 @@ ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationU
  this function returns enum value which that illustrates the type of ksa national id if it is SAUDI OR RESIDENT OR NOT_VALID type  based on used regex
  
   
-   ### isKsaCitizen(): Boolean
+ ### isKsaCitizen(): Boolean
  this function returns aboolean value which that illustrates the input  number of ksa national id is valid citizen number or not based on used regex
  
   ### isKsaResident(): Boolean
