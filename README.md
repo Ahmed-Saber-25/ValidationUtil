@@ -7,6 +7,18 @@
 
 ### isValidUserName(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user name 
+ **Example**
+
+```kt
+ValidationUtil.isValidUserName("ahmed", 5, 7)
+//=> true
+
+ValidationUtil.isValidUserName("ahmed.", 5, 7, hasDot = ValidationUtil.RegexAdditionType.MANDATORY.value)
+//=> true
+
+ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationUtil.RegexAdditionType.MANDATORY.value)
+//=> true
+```
 
 ### isValidUserPassword(): Boolean
  this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user password 
@@ -45,5 +57,14 @@
  this function returns aboolean value which that illustrates the input  number of credit card is valid american express credit card number or not based on used regex
  
  ### getCreditCardType(): CreditCardType
- this function returns enum value which that illustrates the type of credit card is VISA OR MASTER OR AMEX OR NON type  based on used regex
+ this function returns enum value which that illustrates the type of credit card is VISA OR MASTER OR AMEX OR NOT_VALID type  based on used regex
  
+### getKsaNationalIdType(): IdType
+ this function returns enum value which that illustrates the type of ksa national id if it is SAUDI OR RESIDENT OR NOT_VALID type  based on used regex
+ 
+  
+   ### isKsaCitizen(): Boolean
+ this function returns aboolean value which that illustrates the input  number of ksa national id is valid citizen number or not based on used regex
+ 
+  ### isKsaResident(): Boolean
+ this function returns aboolean value which that illustrates the input  number of ksa national id is valid resident number or not based on used regex
