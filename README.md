@@ -96,6 +96,7 @@ ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = Validation
 <details>
 <summary><strong>Running Tests</strong></summary>
 
-Running and reviewing unit tests is a great way to get familiarized with this class and its methods. You can find ValidationUtilTest.kt which contains all valid and invalid test cases for every function
+Running and reviewing unit tests is a great way to get familiarized with this class and its methods. You can find ####ValidationUtilTest.kt
+ which contains all valid and invalid test cases for every function
 
 </details>
