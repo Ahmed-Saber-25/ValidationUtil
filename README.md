@@ -97,7 +97,8 @@ ValidationUtil.isValidInput("Ahmed", 5, 7, hasCapitalLetters = ValidationUtil.Re
 
 ```kt
  ValidationUtil.getInputRegexString(5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
-            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> ^(?=.*[a-z])(.*[A-Z]*?)(.*\d*?)(.*[.]*?)(.*[_]*?)(.*[-+!@#$%^&*,?]*?).{5,7}$
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)
+//=> ^(?=.*[a-z])(.*[A-Z]*?)(.*\d*?)(.*[.]*?)(.*[_]*?)(.*[-+!@#$%^&*,?]*?).{5,7}$
 
 ValidationUtil.getInputRegexString(5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
 //=> ^(?=.*[a-z])(?!.*[A-Z])(?!.*\d)(?!.*[.])(?!.*[_])(?!.*[-+!@#$%^&*,?]).{5,7}$
