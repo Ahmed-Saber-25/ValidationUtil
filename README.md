@@ -52,7 +52,8 @@ ValidationUtil.isValidUserName("ahmed@", 5, 7, hasSpecialCharacter = ValidationU
 
 ```kt
  ValidationUtil.isValidUserPassword("ahmdK9._@", 5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
-            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> true
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)
+            //=> true
 
 ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
 //=> false
@@ -76,7 +77,8 @@ ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = Validation
 
 ```kt
  ValidationUtil.isValidInput("ahmdK9._@", 5, 7, ValidationUtil.RegexAdditionType.OPTIONAL.value,
-            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)//=> true
+            ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value,ValidationUtil.RegexAdditionType.OPTIONAL.value)
+            //=> true
 
 ValidationUtil.isValidInput("Ahmed", 5, 7, hasCapitalLetters = ValidationUtil.RegexAdditionType.NON.value)
 //=> false
@@ -107,42 +109,222 @@ ValidationUtil.getInputRegexString(5, 7, hasCapitalLetters = ValidationUtil.Rege
   ### isValidUserEmail(): Boolean
  this function returns aboolean value which that illustrates the input email is valid or not based on used regex
  
+ **Params**
+
+* `userEmail` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidUserEmail("ahmed8@test5.com")
+//=> true
+```
+ 
   ### isValidKsaPhoneNumber(): Boolean
  this function returns aboolean value which that illustrates the input ksa phone number is valid or not based on used regex
+ 
+ **Params**
+
+* `ksaPhoneNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidKsaPhoneNumber("+966544949955")
+//=> true
+```
  
   ### isValidEgPhoneNumber(): Boolean
  this function returns aboolean value which that illustrates the input egyptan phone number is valid or not based on used regex
  
+  **Params**
+
+* `egPhoneNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidEgPhoneNumber("01020713678")
+//=> true
+ ```
+ 
    ### isValidIpAddress(): Boolean
  this function returns aboolean value which that illustrates the input ip address number is valid or not based on used regex
+ 
+ **Params**
+
+* `ipAddress` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidIpAddress("192.168.1.1")
+//=> true
+ ```
  
    ### isValidEgyptianNationalId(): Boolean
  this function returns aboolean value which that illustrates the input egyptian national id number is valid or not based on used regex
  
+ **Params**
+
+* `egyptianNationalId` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidEgyptianNationalId("29305021900041")
+//=> true
+ ```
+ 
    ### isValidCvvNumber(): Boolean
  this function returns aboolean value which that illustrates the input cvv number of credit card is valid or not based on used regex
+ 
+  **Params**
+
+* `cvvNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isValidCvvNumber("123")
+//=> true
+ ```
  
    ### isVisa(): Boolean
  this function returns aboolean value which that illustrates the input  number of credit card is valid visa credit card number or not based on used regex
  
+ **Params**
+
+* `creditNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isVisa("4111111111111111")
+//=> true
+ ```
+ 
    ### isMaster(): Boolean
  this function returns aboolean value which that illustrates the input  number of credit card is valid master credit card number or not based on used regex
+ 
+ **Params**
+
+* `creditNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isMaster("5105105105105100")
+//=> true
+ ```
  
    ### isAmex(): Boolean
  this function returns aboolean value which that illustrates the input  number of credit card is valid american express credit card number or not based on used regex
  
+  **Params**
+
+* `creditNumber` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isAmex("371449635398431")
+//=> true
+ ```
+ 
  ### getCreditCardType(): CreditCardType
  this function returns enum value which that illustrates the type of credit card is VISA OR MASTER OR AMEX OR NOT_VALID type  based on used regex
+ 
+  **Params**
+
+* `creditNumber` **{String}** mandatory input
+
+* `returns` **{CreditCardType}**
+
+**Example**
+
+```kt
+ValidationUtil.getCreditCardType("4111111111111111")
+//=> VISA
+ValidationUtil.getCreditCardType("5105105105105100")
+//=> MASTER
+ValidationUtil.getCreditCardType("371449635398431")
+//=> AMEX
+ValidationUtil.getCreditCardType("1635788548")
+//=> NOT_VALID
+ ```
  
 ### getKsaNationalIdType(): IdType
  this function returns enum value which that illustrates the type of ksa national id if it is SAUDI OR RESIDENT OR NOT_VALID type  based on used regex
  
+   **Params**
+
+* `ksaNationalId` **{String}** mandatory input
+
+* `returns` **{IdType}**
+
+**Example**
+
+```kt
+ValidationUtil.getKsaNationalIdType("1635788548")
+//=> SAUDI
+ValidationUtil.getKsaNationalIdType("2827927043")
+//=> RESIDENT
+ValidationUtil.getCreditCardType("293050232190031")
+//=> AMEX
+ValidationUtil.getCreditCardType("1635788548")
+//=> NOT_VALID
+ ```
   
  ### isKsaCitizen(): Boolean
  this function returns aboolean value which that illustrates the input  number of ksa national id is valid citizen number or not based on used regex
  
+  **Params**
+
+* `ksaNationalId` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isKsaCitizen("1635788548")
+//=> true
+ ```
+ 
   ### isKsaResident(): Boolean
  this function returns aboolean value which that illustrates the input  number of ksa national id is valid resident number or not based on used regex
+ 
+   **Params**
+
+* `ksaNationalId` **{String}** mandatory input
+
+* `returns` **{Boolean}**
+
+**Example**
+
+```kt
+ValidationUtil.isKsaResident("2827927043")
+//=> true
+ ```
  
 <details>
 <summary><strong>Running Tests</strong></summary>
