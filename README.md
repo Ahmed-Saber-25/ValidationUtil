@@ -92,3 +92,10 @@ ValidationUtil.isValidUserPassword("Ahmed", 5, 7, hasCapitalLetters = Validation
  
   ### isKsaResident(): Boolean
  this function returns aboolean value which that illustrates the input  number of ksa national id is valid resident number or not based on used regex
+ 
+<details>
+<summary><strong>Running Tests</strong></summary>
+
+Running and reviewing unit tests is a great way to get familiarized with this class and its methods. You can find ValidationUtilTest.kt which contains all valid and invalid test cases for every function
+
+</details>
