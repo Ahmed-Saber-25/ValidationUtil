@@ -6,4 +6,44 @@
 ## Usage
 
 ### isValidUserName(): Boolean
- this function returns aboolean value based on passed values of passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY)
+ this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user name 
+
+### isValidUserPassword(): Boolean
+ this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for validating user password 
+ 
+ ### isValidInput(): Boolean
+ this function returns aboolean value based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) for building the required regex to match input string 
+ 
+  ### getInputRegexString(): String
+ this function returns astring value which is the required regex based on passed parameters which works as constrains like minLength,maxLength,[hasDot,hasUnderScore,hasSpecialCharacter,hasNumbers,hasCapitalLetters] which have three enum types (NON or OPTIONAL or MANDATORY) 
+ 
+  ### isValidUserEmail(): Boolean
+ this function returns aboolean value which that illustrates the input email is valid or not based on used regex
+ 
+  ### isValidKsaPhoneNumber(): Boolean
+ this function returns aboolean value which that illustrates the input ksa phone number is valid or not based on used regex
+ 
+  ### isValidEgPhoneNumber(): Boolean
+ this function returns aboolean value which that illustrates the input egyptan phone number is valid or not based on used regex
+ 
+   ### isValidIpAddress(): Boolean
+ this function returns aboolean value which that illustrates the input ip address number is valid or not based on used regex
+ 
+   ### isValidEgyptianNationalId(): Boolean
+ this function returns aboolean value which that illustrates the input egyptian national id number is valid or not based on used regex
+ 
+   ### isValidCvvNumber(): Boolean
+ this function returns aboolean value which that illustrates the input cvv number of credit card is valid or not based on used regex
+ 
+   ### isVisa(): Boolean
+ this function returns aboolean value which that illustrates the input  number of credit card is valid visa credit card number or not based on used regex
+ 
+   ### isMaster(): Boolean
+ this function returns aboolean value which that illustrates the input  number of credit card is valid master credit card number or not based on used regex
+ 
+   ### isAmex(): Boolean
+ this function returns aboolean value which that illustrates the input  number of credit card is valid american express credit card number or not based on used regex
+ 
+ ### getCreditCardType(): CreditCardType
+ this function returns enum value which that illustrates the type of credit card is VISA OR MASTER OR AMEX OR NON type  based on used regex
+ 
